@@ -1,0 +1,34 @@
+<div id="jumbotron">
+    <div class="fix">
+        <h1>Login</h1>
+        <form (submit)="login(formData)" #formData="ngForm">
+            Email:<br> <input type="text" name="email" ngModel><br>
+            Password: <br> <input type="text" name="password" ngModel><br>
+            <input type="submit" value="Login">
+        </form>
+        <p class="box1">{{l_error}}</p>
+    </div>
+
+
+    <div class="fix">
+        <h1>Registration</h1>
+        <!--<div class="box">-->
+            <form (submit)="registration(regData)" #regData="ngForm">
+                <!-- *Username: <br> <input type="text" name="username" ngModel>  <br> -->
+                *Email: <br> <input type="text" name="email" ngModel>  <br>
+                *Password: <br> <input type="text" name="password" ngModel> <br>
+                *Password Confirmation: <br> <input type="text" name="password_confirmation" ngModel>  <br>
+                <input type="submit" value="Login">
+            </form>
+            <p class="box1" *ngFor='let error of errors'>{{error}}</p>
+    </div>
+        <!--</div>-->
+        <div class="box">
+            <div >
+            <p>{{error}}</p>
+            </div>
+        </div>
+
+
+
+</div>
