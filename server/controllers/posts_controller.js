@@ -3,13 +3,13 @@ let post = mongoose.model('Post');
 
 module.exports = {
     allPosts: (req, res) => {
-        console.log('requesting post')
+        // console.log('requesting post')
         post.find({}).exec((err, posts)=>{
             if(err){
-                console.log('error getting post')
+                console.log('error getting posts')
             } else {
                 res.json(posts);
-                console.log(posts);
+                // console.log(posts);
             }
         });
     },
@@ -20,6 +20,19 @@ module.exports = {
         } else {
             return res.json(req.session.user)
             }
+    },
+
+    singlePost: (req, res) => {
+        // console.log('requesting post')
+        post.findById(req.params.id)
+            .exec((err, post)=>{
+                if(err){
+                    console.log('error getting the post')
+                } else {
+                    res.json(post);
+                    // console.log(posts);
+                }
+        });
     },
 
 }

@@ -5,18 +5,26 @@ import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 
 import { RegLoginService } from './login/reg-login.service';
+import { PostService } from './post.service';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { NavComponent } from './dashboard/nav/nav.component';
+import { LandingComponent } from './dashboard/landing/landing.component';
+import { DetailsComponent } from './dashboard/details/details.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    DashboardComponent
+    DashboardComponent,
+    NavComponent,
+    LandingComponent,
+    DetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -24,7 +32,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     HttpModule,
     AppRoutingModule
   ],
-  providers: [RegLoginService],
+  providers: [RegLoginService, PostService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
