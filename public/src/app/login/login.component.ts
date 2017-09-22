@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RegLoginService } from './reg-login.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -9,27 +10,27 @@ import { RegLoginService } from './reg-login.service';
 })
 export class LoginComponent implements OnInit {
   errors: string[]= [];
-  l_error;
 
-  constructor(
-          private _loginService: RegLoginService,
-          private _router: Router
-  ) { }
+  rForm: FormGroup;
+  email: string = '';
+  password: string ='';
 
-  ngOnInit() {
-    // this.errors
-  }
 
-  login(formData){
-      this._loginService.login(formData.value)
-          .then( (user)=> {
-            if (user == null){
-              this.l_error = 'Email/Password failed'
-            } else {
-              this._router.navigate(['/dashboard'])
-            }
-          })
-          .catch( (err) => console.log('this is an error'))
+  constructor(private _loginService: RegLoginService, private _router: Router, private fb: FormBuilder) {
+        this.rForm = fb.group({
+            'email': [null, Validators.required],
+            'password': [null, Validators.compose([Validators.required, Validators.minLength(10), Validators.maxLength(30)])],
+            'validate': ''
+        })
+   }
+
+  ngOnInit() { }
+
+  login(formData) {
+      console.log(formData.email)
+      this.email = formData.email
+      this.password = formData.password
+
   }
 
   registration(regData){

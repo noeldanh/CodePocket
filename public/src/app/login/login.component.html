@@ -2,8 +2,17 @@
     <div class="fix">
         <h1>Login</h1>
         <form (submit)="login(formData)" #formData="ngForm">
-            Email:<br> <input type="text" name="email" ngModel><br>
-            Password: <br> <input type="text" name="password" ngModel><br>
+            Email:<br>
+            <input type="text" name="email"
+            required
+            minlength="10"
+            maxlength="30"
+            [(ngModel)]="login.email"
+            #email="ngModel"
+            />
+            <span *ngIf="!email.valid">Email must be valid</span>
+            <br>
+            Password: <br> <input type="text" name="password" [(ngModel)]="login.password" #password="ngModel"><br>
             <input type="submit" value="Login">
         </form>
         <p class="box1">{{l_error}}</p>
