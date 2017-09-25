@@ -4,12 +4,19 @@ let User = mongoose.model('User');
 module.exports = {
     login: function(req, res){
         User.findOne({email:req.body.email}).exec(function(err, user){
-            if(user){
+            if(err){
+                // console.log(err);
+                return res.json({
+                    errors: {
+                        login: {
+                            message: 'incorrect user credentials'
+                        }
+                    }
+                });
+            } else{
                 req.session.user = user._id
                 console.log(req.session.user + user)
                 return res.json(user)
-            } else{
-                return res.json(err)
             }
 
         })

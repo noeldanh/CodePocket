@@ -1,4 +1,4 @@
-<div id="jumbotron">
+<!-- <div id="jumbotron">
     <div class="fix">
         <h1>Login</h1>
         <form (submit)="login(formData)" #formData="ngForm">
@@ -16,7 +16,7 @@
             <input type="submit" value="Login">
         </form>
         <p class="box1">{{l_error}}</p>
-    </div>
+    </div> -->
 
 
     <div class="fix">
@@ -29,7 +29,7 @@
                 *Password Confirmation: <br> <input type="text" name="password_confirmation" ngModel>  <br>
                 <input type="submit" value="Login">
             </form>
-            <p class="box1" *ngFor='let error of errors'>{{error}}</p>
+            <p class="box1" *ngFor='let error of loginErrors'>{{error}}</p>
     </div>
         <!--</div>-->
         <div class="box">
@@ -40,4 +40,4 @@
 
 
 
-</div>
+<!-- </div> -->
