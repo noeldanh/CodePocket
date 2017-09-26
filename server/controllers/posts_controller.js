@@ -1,10 +1,10 @@
 let mongoose = require('mongoose');
-let post = mongoose.model('Post');
+let Post = mongoose.model('Post');
 
 module.exports = {
     allPosts: (req, res) => {
         // console.log('requesting post')
-        post.find({}).exec((err, posts)=>{
+        Post.find({}).exec((err, posts)=>{
             if(err){
                 console.log('error getting posts')
             } else {
@@ -19,12 +19,12 @@ module.exports = {
             res.sendStatus(401)
         } else {
             return res.json(req.session.user)
-            }
+        }
     },
 
     singlePost: (req, res) => {
         // console.log('requesting post')
-        post.findById(req.params.id)
+        Post.findById(req.params.id)
             .exec((err, post)=>{
                 if(err){
                     console.log('error getting the post')
@@ -33,6 +33,21 @@ module.exports = {
                     // console.log(posts);
                 }
         });
+    },
+
+    createPost: (req, res) => {
+        if(!req.session.user){
+            res.redirect('/')
+        } else {
+            let newPost = new Post(req.body);
+            newPost.save( (err, post) => {
+                if(err){
+                    console.log('didnt create post')
+                } else {
+                    return res.json(post)
+                }
+            })
+        }
     },
 
 }

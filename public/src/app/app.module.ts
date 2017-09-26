@@ -14,6 +14,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { NavComponent } from './dashboard/nav/nav.component';
 import { LandingComponent } from './dashboard/landing/landing.component';
 import { DetailsComponent } from './dashboard/details/details.component';
+import { PostComponent } from './dashboard/post/post.component';
+// import { LengthPipe } from './length.pipe';
 
 
 @NgModule({
@@ -25,6 +27,8 @@ import { DetailsComponent } from './dashboard/details/details.component';
     NavComponent,
     LandingComponent,
     DetailsComponent,
+    PostComponent,
+    // LengthPipe,
   ],
   imports: [
     BrowserModule,

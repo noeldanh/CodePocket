@@ -6,16 +6,21 @@ const UserSchema = new Schema({
 		// username: {type: String, required: true, minlength: 4, maxlength: 16},
 		email: {
 			type:String,
-			required:[true, "Incorrect Email"],
-			minlength: [8, "Must be at least a minimum of 8 characters"],
-			unique: [true, 'Email is already registered'],
-			match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address'],
+			required:[true, "Please enter an email"],
+			// minlength: [8, "Must be at least a minimum of 8 characters"],
+			unique: true,
+			validate: {
+		  		validator: function(value) {
+		  			return /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/.test(value);
+		  		},
+		  		message: "Please enter a valid email"
+		  	}
 
 		},
 		password: {
 			type: String,
 			required: [true, "Please enter your password"],
-			minlength: 8,
+			minlength: [8, "Password needs to be at least 8 characters"],
 			maxlength: 32,
 			validate: {
 				validator: function( value ) {

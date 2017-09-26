@@ -5,6 +5,10 @@ $bg: #2A3136;
 $text-color: #88949D;
 $accent-color: #00E4AC;
 
+body, html {
+    height: 100%;
+}
+
 body {
     background: $bg;
     color:$text-color;
@@ -39,4 +43,10 @@ h1 {
     font-weight: 700;
     font-size: 4.2em;
     line-height: 1.2em;
+}
+
+.body-blur {
+    background: $bg url(/assets/images/blurbg.jpg) no-repeat top center !important;
+    background-size: 90% !important;
+    height: 100%;
 }
