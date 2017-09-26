@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from './../post.service';
+import { Router } from '@angular/router';
 import { Post } from './../post';
 
 @Component({
@@ -14,13 +15,19 @@ export class DashboardComponent implements OnInit {
     // ]
   posts: Array<Post>;
 
-  constructor(private _postService: PostService) { }
+  constructor(private _postService: PostService, private _router: Router) { }
 
   ngOnInit() {
       this.allPosts()
-    //   this._postService.getPosts()
-    //     .subscribe(res=> this.posts = res)
+      this.getUserCurrent()
   }
+
+  getUserCurrent(){
+      this._postService.getCurrentUser()
+          .then( (response) => console.log(response))
+          .catch( (err) => this._router.navigate(['/']))
+  }
+
   allPosts(){
       this._postService.getPosts()
 

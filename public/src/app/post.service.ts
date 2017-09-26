@@ -16,4 +16,11 @@ export class PostService {
       return this._http.get('/api/posts/'+id)
         .map(data => data.json()).toPromise()
   }
+
+  getCurrentUser(){
+  // console.log('hello?')
+  return this._http.get('/api/current')
+      .map(data => data.json()).toPromise()
+  }
+
 }

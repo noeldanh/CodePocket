@@ -4,19 +4,12 @@ let User = mongoose.model('User');
 module.exports = {
     login: function(req, res){
         User.findOne({email:req.body.email}).exec(function(err, user){
-            if(err){
-                // console.log(err);
-                return res.json({
-                    errors: {
-                        login: {
-                            message: 'incorrect user credentials'
-                        }
-                    }
-                });
-            } else{
+            if(user){
                 req.session.user = user._id
-                console.log(req.session.user + user)
+                // console.log(req.session.user)
                 return res.json(user)
+            } else{
+                return res.json(err)
             }
 
         })
@@ -39,10 +32,16 @@ module.exports = {
 
     current: (req, res) => {
         if(!req.session.user){
-            res.sendStatus(401)
+            // res.sendStatus(401);
+            res.redirect('/')
         } else {
             return res.json(req.session.user)
-            }
+        }
+    },
+
+    logout: (req, res)=> {
+        req.session.destroy();
+        res.redirect('/')
     },
 
 }

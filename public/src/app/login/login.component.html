@@ -1,43 +1,50 @@
-<!-- <div id="jumbotron">
-    <div class="fix">
-        <h1>Login</h1>
-        <form (submit)="login(formData)" #formData="ngForm">
-            Email:<br>
-            <input type="text" name="email"
-            required
-            minlength="10"
-            maxlength="30"
-            [(ngModel)]="login.email"
-            #email="ngModel"
-            />
-            <span *ngIf="!email.valid">Email must be valid</span>
-            <br>
-            Password: <br> <input type="text" name="password" [(ngModel)]="login.password" #password="ngModel"><br>
-            <input type="submit" value="Login">
-        </form>
-        <p class="box1">{{l_error}}</p>
-    </div> -->
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+    <div class="container">
+    <img src="./../../assets/images/logo.svg" id="logo" alt="" style="width: 13em">
+    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</div>
+</nav>
 
-
-    <div class="fix">
-        <h1>Registration</h1>
-        <!--<div class="box">-->
-            <form (submit)="registration(regData)" #regData="ngForm">
-                <!-- *Username: <br> <input type="text" name="username" ngModel>  <br> -->
-                *Email: <br> <input type="text" name="email" ngModel>  <br>
-                *Password: <br> <input type="text" name="password" ngModel> <br>
-                *Password Confirmation: <br> <input type="text" name="password_confirmation" ngModel>  <br>
+<div class="container" style="margin-top: 100px">
+    <!-- <div id="jumbotron"> -->
+    <div class="row">
+        <div class="fix col-sm-6">
+            <h3>Login</h3>
+            <form (submit)="login(formData)" #formData="ngForm">
+                Email:<br> <input type="text" name="email" ngModel><br>
+                Password: <br> <input type="text" name="password" ngModel><br>
                 <input type="submit" value="Login">
             </form>
-            <p class="box1" *ngFor='let error of loginErrors'>{{error}}</p>
-    </div>
-        <!--</div>-->
+            <p class="box1">{{l_error}}</p>
+        </div>
+
+
+        <div class="fix col-sm-6">
+            <h3>Registration</h3>
+            <!--<div class="box">-->
+                <form (submit)="registration(regData)" #regData="ngForm">
+                    *Email: <br> <input type="text" name="email" ngModel>  <br>
+                    *Password: <br> <input type="text" name="password" ngModel> <br>
+                    *Password Confirmation: <br> <input type="text" name="password_confirmation" ngModel>  <br>
+                    <input type="submit" value="Login">
+                </form>
+                <p class="box1" *ngFor='let error of errors'>{{error}}</p>
+        </div>
+            <!--</div>-->
         <div class="box">
             <div >
             <p>{{error}}</p>
             </div>
         </div>
+    </div>
+
+    <!-- </div> -->
+</div>
 
 
 
-<!-- </div> -->
+<!-- <app-landing [myPost]="posts"></app-landing> -->
+<!-- {{ posts | json }} -->
+<router-outlet></router-outlet>
