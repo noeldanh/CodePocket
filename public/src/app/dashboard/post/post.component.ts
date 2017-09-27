@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { routerTransition } from './../../animations';
 import { PostService } from './../../post.service';
 import { Router } from '@angular/router';
+import { userPost } from './../userPost';
 
 @Component({
   selector: 'app-post',
@@ -11,8 +12,10 @@ import { Router } from '@angular/router';
   host: {'[@routerTransition]': ''}
 })
 export class PostComponent implements OnInit {
-
+  uPost = new userPost();
+  // posts = [];
   constructor(private _postService: PostService, private _router: Router) { }
+
 
   ngOnInit() {
       this.getUserCurrent()
@@ -24,9 +27,11 @@ export class PostComponent implements OnInit {
           .catch( (err) => this._router.navigate(['/']))
   }
 
-  createP(postData){
-      this._postService.createPost(postData.value)
-        .then( (response)=> console.log('does createP in post ts work'))
+  createP(){
+      this._postService.createPost(this.uPost)
+        .then( (response)=> {
+            this._router.navigate(['/dashboard'])
+        })
         .catch( (err)=> console.log('error with creating post in ts file'))
   }
 

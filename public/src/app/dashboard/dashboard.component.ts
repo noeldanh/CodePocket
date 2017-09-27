@@ -17,23 +17,30 @@ export class DashboardComponent implements OnInit {
     //     {title: 'second'}
     // ]
   posts: Array<Post>;
+  // userPosts: Array<Post
 
   constructor(private _postService: PostService, private _router: Router) { }
 
   ngOnInit() {
-      this.allPosts()
+    //   this.allPosts()
       this.getUserCurrent()
+      this.userPosts()
   }
 
   getUserCurrent(){
       this._postService.getCurrentUser()
-          .then( (response) => console.log(response))
+          .then( (response) => console.log())
           .catch( (err) => this._router.navigate(['/']))
   }
 
   allPosts(){
       this._postService.getPosts()
+        .then( (response) => console.log(response) )
+        .catch( (err) => console.log(err) )
+  }
 
+  userPosts(){
+      this._postService.showUserPost()
         .then( (response) => this.posts = response )
         .catch( (err) => console.log(err) )
   }

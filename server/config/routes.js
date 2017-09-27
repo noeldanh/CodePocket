@@ -9,5 +9,6 @@ module.exports = function(app) {
     app.post('/api/posts', posts_controller.createPost);
     app.get('/api/posts', posts_controller.allPosts);
     app.get('/api/posts/:id', posts_controller.singlePost);
+    app.get('/api/userPost', posts_controller.showUserPost);
 
 }

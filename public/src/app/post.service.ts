@@ -24,16 +24,15 @@ export class PostService {
   }
 
   createPost(data){
-      console.log('hello? from the service')
-    //   console.log(data)
       return this._http.post('/api/posts', data)
           .map(data => data.json()).toPromise()
   }
 
+  showUserPost(){
+      return this._http.get('/api/userPost')
+        .map(data => data.json()).toPromise()
+  }
+
 }
 
-// createQuestion(question){
-//     return this._http.post('/api/question', question)
-//         .map( (response: Response) => response.json())
-//         .toPromise()
-//   }
+// showUserPost

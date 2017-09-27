@@ -2,26 +2,64 @@
     <div class="container">
     <app-nav></app-nav>
 
-        <form (submit)="createP(postData)" #postData="ngForm">
+        <form (submit)="createP()" #postData="ngForm">
           <div class="form-row">
             <div class="col-md-6">
               <label>Title of Tutorial</label>
-              <input type="text" name="title" placeholder="Title" ngModel>
+              <input type="text"
+               name="title"
+               required
+               minlength="2"
+               maxlength="10"
+               placeholder="Title"
+              [(ngModel)]="uPost.title"
+              #title="ngModel"
+              >
             </div>
+            <!-- {{ title.errors | json }} -->
+            <!-- <p *ngIf="title.errors?.required && (title.touched || title.dirty)">Please enter your title name.</p> -->
             <div class="col-md-6">
               <label for="" class="">URL</label>
-              <input type="text" name="url" placeholder="URL" ngModel>
+              <input type="text"
+               name="url"
+               required
+               placeholder="URL"
+               minlength="5"
+               [(ngModel)]="uPost.url"
+               #url="ngModel"
+                >
             </div>
           </div>
+          <div class="form-row">
+            <div class="col-md-6">
+                <p *ngIf="title.errors?.required && (title.touched || title.dirty)">Please enter your title.</p>
+    			<p *ngIf="title.errors?.minlength && (title.touched || title.dirty)">Must be at least 2 characters.</p>
+                <!-- <p *ngIf="title.errors?.maxlength && (title.touched || title.dirty)">Must be at least 2 characters.</p> -->
+            </div>
+            <div class="col-md-6">
+                <p *ngIf="url.errors?.required && (url.touched || url.dirty)">Please enter your url.</p>
+    			<p *ngIf="url.errors?.minlength && (url.touched || url.dirty)">Must be at least 5 characters.</p>
+            </div>
+          </div>
+
           <div class="form-group">
             <label>Description</label>
-            <textarea type="text" name="description" ngModel></textarea>
-            <input type="submit"  class="cta-btn filled" value="Post Tutorial" style="margin-top: 20px">
+            <textarea name="description"
+             [(ngModel)]="uPost.description"
+             required
+             minlength="10"
+             maxlength="130"
+             #description="ngModel"
+             ></textarea>
+             <div class="col-md-6" style="margin: 0px; padding: 0px">
+                 <p *ngIf="description.errors?.required && (description.touched || description.dirty)">Please enter your description.</p>
+     			<p *ngIf="description.errors?.minlength && (description.touched || description.dirty)">Must be at least 10 characters.</p>
+             </div>
+            <input type="submit" [disabled]="!postData.form.valid"  class="cta-btn filled" value="Post Tutorial" style="margin-top: 20px">
           </div>
         </form>
     </div>
 </div>
-
 <router-outlet></router-outlet>
 <!-- <form (submit)="registration(regData)" #regData="ngForm">
     *Email: <br> <input type="text" name="email" ngModel>  <br>
