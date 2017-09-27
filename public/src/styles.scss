@@ -50,3 +50,33 @@ h1 {
     background-size: 90% !important;
     height: 100%;
 }
+
+.circle {
+    fill: $accent-color;
+}
+
+.arrow {
+    fill: $bg;
+}
+
+#group {
+    cursor: pointer;
+}
+
+#group:hover .circle {
+    animation: animateCircle .5s forwards;
+    -webkit-animation: animateCircle .5s forwards;
+}
+
+#group:hover  .arrow {
+    fill: $accent-color;
+}
+
+@keyframes animateCircle {
+    0% {
+        fill: $accent-color;
+    }
+    100% {
+        fill: $bg;
+    }
+}

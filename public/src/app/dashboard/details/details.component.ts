@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { PostService } from './../../post.service';
 import { Post } from './../../post';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -12,19 +12,23 @@ import { routerTransition } from './../../animations';
   host: {'[@routerTransition]': ''}
 })
 export class DetailsComponent implements OnInit {
-
-  post: Array<Post>;
+  // @Input() myPost;
+  // post: Array<Post>;
+  // postId;
 
   constructor(private _postService: PostService, private _route: ActivatedRoute) { }
 
 
   ngOnInit() {
     //   this._route.params.subscribe( (param) => {
-    //       let id = params['id'];
-      //
-    //       this._postService.getPost(id)
-    //         .subscribe(response => this.post = response);
+    //       let id = param['id'];
+    //       this.postId = id
     //   })
   }
 
+  // getUserPost(id){
+    //   this._postService.getPost(id)
+    //     .then( (response) => console.log(response))
+    //     .catch( (err) => console.log('error finding single post'))
+  // }
 }

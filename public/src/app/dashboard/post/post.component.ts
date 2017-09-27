@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from './../../animations';
 import { PostService } from './../../post.service';
@@ -28,6 +29,7 @@ export class PostComponent implements OnInit {
   }
 
   createP(){
+      this.uPost;
       this._postService.createPost(this.uPost)
         .then( (response)=> {
             this._router.navigate(['/dashboard'])
