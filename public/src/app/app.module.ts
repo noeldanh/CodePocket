@@ -16,7 +16,7 @@ import { LandingComponent } from './dashboard/landing/landing.component';
 import { DetailsComponent } from './dashboard/details/details.component';
 import { PostComponent } from './dashboard/post/post.component';
 // import { LengthPipe } from './length.pipe';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -35,7 +35,8 @@ import { PostComponent } from './dashboard/post/post.component';
     FormsModule,
     HttpModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [RegLoginService, PostService],
   bootstrap: [AppComponent]

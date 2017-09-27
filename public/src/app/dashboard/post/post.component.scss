@@ -1,0 +1,38 @@
+
+$bg: #2A3136;
+$text-color: #88949D;
+$accent-color: #00E4AC;
+
+label {
+    color: $accent-color !important;
+    font-size: 1.5em;
+}
+
+input[type="text"], textarea, input[type="password"], input[type="email"] {
+    background: none;
+    border: 1px solid #617879 ;
+    padding: 22px 15px;
+    color: $text-color;
+}
+
+// input {
+//     background-color: $bg;
+// }
+
+// input[type='text']:click{color:$bg}
+
+textarea {
+    min-height: 70px;
+}
+
+.filled {
+    background: $accent-color;
+    color: $bg;
+    float: left;
+    border-radius: 0;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    font-family: 'Raleway';
+    padding: 12px 22px;
+    margin-top: 40px;
+}

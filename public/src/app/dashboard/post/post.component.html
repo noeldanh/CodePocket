@@ -1,3 +1,31 @@
-<p>
-  post works!
-</p>
+<div class="body-blur">
+    <div class="container">
+    <app-nav></app-nav>
+
+        <form (submit)="createP(postData)" #postData="ngForm">
+          <div class="form-row">
+            <div class="col-md-6">
+              <label>Title of Tutorial</label>
+              <input type="text" name="title" placeholder="Title" ngModel>
+            </div>
+            <div class="col-md-6">
+              <label for="" class="">URL</label>
+              <input type="text" name="url" placeholder="URL" ngModel>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Description</label>
+            <textarea type="text" name="description" ngModel></textarea>
+            <input type="submit"  class="cta-btn filled" value="Post Tutorial" style="margin-top: 20px">
+          </div>
+        </form>
+    </div>
+</div>
+
+<router-outlet></router-outlet>
+<!-- <form (submit)="registration(regData)" #regData="ngForm">
+    *Email: <br> <input type="text" name="email" ngModel>  <br>
+    *Password: <br> <input type="text" name="password" ngModel> <br>
+    *Password Confirmation: <br> <input type="text" name="password_confirmation" ngModel>  <br>
+    <input type="submit" value="Login">
+</form> -->

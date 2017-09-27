@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
     <div class="container">
-    <img src="./../../assets/images/logo.svg" id="logo" alt="" style="width: 13em">
+        <a routerLink="/dashboard"><img src="./../../assets/images/logo.svg" id="logo" alt="" style="width: 13em"></a>
     <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -33,9 +33,9 @@
                 <p class="box1" *ngFor='let error of errors'>{{error}}</p>
         </div>
             <!--</div>-->
-        <div class="box">
-            <div >
-            <p>{{error}}</p>
+        <div class="box" >
+            <div>
+                <p style="margin-top: 20px !important">{{error}}</p>
             </div>
         </div>
     </div>
@@ -47,4 +47,4 @@
 
 <!-- <app-landing [myPost]="posts"></app-landing> -->
 <!-- {{ posts | json }} -->
-<router-outlet></router-outlet>
+<router-outlet [@routerTransition]=""></router-outlet>

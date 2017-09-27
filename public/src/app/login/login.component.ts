@@ -2,15 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RegLoginService } from './reg-login.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { routerTransition } from './../animations';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  animations: [routerTransition],
+  host: {'[@routerTransition]': ''}
 })
 export class LoginComponent implements OnInit {
   errors: string[]= [];
   l_error;
+
 
   constructor(
           private _loginService: RegLoginService,

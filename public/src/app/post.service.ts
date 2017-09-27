@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Response } from '@angular/http';
 import 'rxjs';
 
 @Injectable()
@@ -23,4 +23,17 @@ export class PostService {
       .map(data => data.json()).toPromise()
   }
 
+  createPost(data){
+      console.log('hello? from the service')
+    //   console.log(data)
+      return this._http.post('/api/posts', data)
+          .map(data => data.json()).toPromise()
+  }
+
 }
+
+// createQuestion(question){
+//     return this._http.post('/api/question', question)
+//         .map( (response: Response) => response.json())
+//         .toPromise()
+//   }

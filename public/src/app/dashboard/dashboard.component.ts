@@ -2,11 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { PostService } from './../post.service';
 import { Router } from '@angular/router';
 import { Post } from './../post';
+// import { routerTransition } from './../../animations';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss'],
+  // animations: [routerTransition],
+  // host: {'[@routerTransition]': ''}
 })
 export class DashboardComponent implements OnInit {
     // notes = [

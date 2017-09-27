@@ -30,19 +30,19 @@ const UserSchema = new Schema({
 	    },
     }, { timestamps:true });
 
-// UserSchema.pre('save',  function(next) {
-// 	if(this.password != this.password_confirmation){
+UserSchema.pre('save',  function(next) {
+	if(this.password != this.password_confirmation){
 		// This line will create an error message that matches the format of our other error messages
-		// this.invalidate('password', "Password and Password Confirmation must match");
+		this.invalidate('password', "Password and Password Confirmation must match");
 		// In order for our pre-save method to fail we must pass an err into next()
-	// 	let err = new Error("Password and password confirmation do not match");
-	// 	next(err);
-	// }else{
+		let err = new Error("Password and password confirmation do not match");
+		next(err);
+	}else{
 		// remove password_confirmation so we're not storing it
-// 		this.password_confirmation = '';
-// 		this.password = bcrypt.hashSync(this.password, bcrypt.genSaltSync(8));
-// 		next();
-// 	}
-// })
+		this.password_confirmation = '';
+		this.password = bcrypt.hashSync(this.password, bcrypt.genSaltSync(8));
+		next();
+	}
+})
 
 mongoose.model('User', UserSchema);

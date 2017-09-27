@@ -18,6 +18,7 @@ module.exports = {
         if(!req.session.user){
             res.sendStatus(401)
         } else {
+            console.log(req.session.user)
             return res.json(req.session.user)
         }
     },
@@ -36,18 +37,38 @@ module.exports = {
     },
 
     createPost: (req, res) => {
+        // console.log('does post controller work')
+        // console.log(req.body)
         if(!req.session.user){
             res.redirect('/')
         } else {
             let newPost = new Post(req.body);
+            newPost._user = req.session.user;
+            // console.log(newPost._user)
             newPost.save( (err, post) => {
                 if(err){
                     console.log('didnt create post')
                 } else {
+                    console.log(post)
                     return res.json(post)
                 }
             })
         }
     },
+
+    showUserPost: (req, res) => {
+        if(!req.session.user){
+            return res.sendStatus(401);
+        } else {
+            Post.find({_user: req.session.user}, (err, userPost)=>{
+                if(err){
+                    console.log('cant find user bike')
+                } else {
+                    return res.json(userPost)
+                }
+            })
+        }
+
+    }
 
 }
