@@ -14,21 +14,24 @@ import { routerTransition } from './../../animations';
 export class DetailsComponent implements OnInit {
   // @Input() myPost;
   // post: Array<Post>;
-  // postId;
+  postId;
+  singlePost;
 
   constructor(private _postService: PostService, private _route: ActivatedRoute) { }
 
 
   ngOnInit() {
-    //   this._route.params.subscribe( (param) => {
-    //       let id = param['id'];
-    //       this.postId = id
-    //   })
+      this._route.params.subscribe( (param) => {
+          let id = param['id'];
+          this.postId = id
+          console.log(this.postId)
+      })
+      this.getUserPost(this.postId)
   }
 
-  // getUserPost(id){
-    //   this._postService.getPost(id)
-    //     .then( (response) => console.log(response))
-    //     .catch( (err) => console.log('error finding single post'))
-  // }
+  getUserPost(id){
+      this._postService.getPost(id)
+        .then( (response) => this.singlePost = [response])
+        .catch( (err) => console.log('error finding single post'))
+  }
 }

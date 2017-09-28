@@ -21,14 +21,15 @@ module.exports = {
     },
 
     singlePost: (req, res) => {
-        Post.findById(req.params.id)
-            .exec((err, post)=>{
-                if(err){
-                    console.log('error getting the post')
-                } else {
-                    res.json(post);
-                }
-        });
+        Post.findOne({_id: req.params.id}).exec(function(err, singlePost){
+            if(err){
+                console.log('couldnt show the question')
+            } else {
+                // req.session.questionId = req.params.id
+                // console.log(questionId)
+                return res.json(singlePost)
+            }
+        })
     },
 
     createPost: (req, res) => {
@@ -64,6 +65,18 @@ module.exports = {
             })
         }
 
-    }
+    },
+
+    // showPost: (req, res) => {
+    //     Post.findOne({_id: req.params.id}).exec(function(err, singlePost){
+    //         if(err){
+    //             console.log('couldnt show the question')
+    //         } else {
+    //             // req.session.questionId = req.params.id
+    //             // console.log(questionId)
+    //             return res.json(singlePost)
+    //         }
+    //     })
+    // }
 
 }

@@ -1,8 +1,12 @@
 <div class="body-blur">
     <div class="container">
     <app-nav></app-nav>
+    <div class="col-md-1">
+        <a routerLink="/dashboard" id="back">Back</a>
+        <!-- <h1>{{single.title}}</h1> -->
+    </div>
 
-        <form (submit)="createP()" #postData="ngForm">
+        <form (submit)="createP()" #postData="ngForm" style="margin-top: 30px;">
           <div class="form-row">
             <div class="col-md-6">
               <label>Title of Tutorial</label>
@@ -10,7 +14,7 @@
                name="title"
                required
                minlength="2"
-               maxlength="10"
+               maxlength="15"
                placeholder="Title"
               [(ngModel)]="uPost.title"
               #title="ngModel"
@@ -18,7 +22,7 @@
             </div>
             <!-- {{ title.errors | json }} -->
             <!-- <p *ngIf="title.errors?.required && (title.touched || title.dirty)">Please enter your title name.</p> -->
-            <div class="col-md-6">
+            <div class="col-md-5">
               <label for="" class="">URL</label>
               <input type="text"
                name="url"
