@@ -67,16 +67,19 @@ module.exports = {
 
     },
 
-    // showPost: (req, res) => {
-    //     Post.findOne({_id: req.params.id}).exec(function(err, singlePost){
-    //         if(err){
-    //             console.log('couldnt show the question')
-    //         } else {
-    //             // req.session.questionId = req.params.id
-    //             // console.log(questionId)
-    //             return res.json(singlePost)
-    //         }
-    //     })
-    // }
+    deletePost: function(req, res){
+        if(!req.session.user){
+            res.sendStatus(401)
+        } else {
+            Post.remove({_id: req.params.id}, function(err, result){
+                if(err){
+                    console.log('couldnt delete')
+                } else {
+                    return res.json(result)
+                }
+            })
+        }
+    },
+
 
 }

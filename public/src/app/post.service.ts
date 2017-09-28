@@ -33,6 +33,11 @@ export class PostService {
         .map(data => data.json()).toPromise()
   }
 
+  deletePost(id){
+      return this._http.delete('/api/posts/'+id)
+        .map(data => data.json()).toPromise()
+  }
+
 }
 
 // showUserPost

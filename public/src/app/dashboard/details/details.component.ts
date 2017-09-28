@@ -17,7 +17,7 @@ export class DetailsComponent implements OnInit {
   postId;
   singlePost;
 
-  constructor(private _postService: PostService, private _route: ActivatedRoute) { }
+  constructor(private _postService: PostService, private _route: ActivatedRoute, private _router: Router) { }
 
 
   ngOnInit() {
@@ -27,6 +27,7 @@ export class DetailsComponent implements OnInit {
           console.log(this.postId)
       })
       this.getUserPost(this.postId)
+    //   this.deletePost(this.postId)
   }
 
   getUserPost(id){
@@ -34,4 +35,12 @@ export class DetailsComponent implements OnInit {
         .then( (response) => this.singlePost = [response])
         .catch( (err) => console.log('error finding single post'))
   }
+
+  deletePost(id){
+       this._postService.deletePost(id)
+            .then( (response)=> this._router.navigate(['/dashboard']))
+            .catch( (err)=> console.log('didnt update'))
+    }
 }
+
+// deletePost
