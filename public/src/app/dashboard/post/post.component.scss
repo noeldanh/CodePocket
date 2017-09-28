@@ -4,47 +4,46 @@ $text-color: #88949D;
 $accent-color: #00E4AC;
 
 label {
-    color: $accent-color !important;
-    font-size: 1.5em;
+    color:$accent-color;
+    font-size:1.5em;
 }
 
-input[type="text"], textarea, input[type="password"], input[type="email"] {
-    background: none;
-    border: 1px solid #617879 ;
-    padding: 22px 15px;
-    color: $text-color;
+input[type='text'],textarea {
+    background:none;
+    border: 1px solid #617879;
+    padding:22px 15px;
+    color:$text-color;
 }
-
-// input {
-//     background-color: $bg;
-// }
-
-// input[type='text']:click{color:$bg}
 
 textarea {
-    min-height: 70px;
+    min-height:70px;
 }
 
 .filled {
-    background: $accent-color;
-    color: $bg;
-    float: left;
-    border-radius: 0;
+    background:$accent-color;
+    color:$bg;
+    float:left;
+    border-radius:0;
     font-size: 1.5em;
-    text-transform: uppercase;
-    font-family: 'Raleway';
+    text-transform:uppercase;
+    font-family:'Raleway';
+    font-weight:700;
     padding: 12px 22px;
-    margin-top: 40px;
+    margin-top:40px;
 }
 
-a#back{
-    background:url('/assets/images/back.svg') no-repeat;
+.alert {
+    margin: -5px 0 20px 0;
+}
+
+a#back {
+    background: url('/assets/images/back.svg') no-repeat;
     width: 69px;
-    display: block;
-    color: #2A3136;
-    font-weight: bold;
-    text-transform: uppercase;
-    text-indent: 16px;
-    padding-top: 1px;
+    display:block;
+    color:#2A3136;
+    font-weight:bold;
+    text-transform:uppercase;
+    text-indent:16px;
+    padding-top:1px;
     margin-bottom: 5px;
 }

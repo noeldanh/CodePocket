@@ -25,10 +25,10 @@
         </div>
 
         <div class="row columns">
-            <h3><a href="#"><u>{{single.url}}</u></a></h3>
+            <h3><a href="{{single.url}}" target="_blank"><u>{{single.url}}</u></a></h3>
             <p>{{single.description}}</p>
         </div>
-        <button (click)="deletePost(single._id)">Delete</button>
+        <a (click)="deletePost(single._id)" id="back1">Delete</a>
     </div>
 
 

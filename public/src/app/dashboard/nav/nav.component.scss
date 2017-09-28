@@ -1,8 +1,31 @@
+
 .header {
     padding: 30px 0;
     margin-bottom: 40px;
 }
 
-#logo{
-    width: 200px;
+#logo {
+    width:200px;
+}
+
+a#moveMe {
+    margin-left: 1000px;
+}
+
+@media screen and (max-width: 39.9375em) {
+
+    #logo, .cta-btn {
+        margin: 0 auto;
+        display:block;
+    }
+    .cta-btn {
+        width:100%;
+        text-align:center;
+        margin-top:20px;
+        margin-left: 20px !important;
+    }
+    .header {
+        margin-bottom: 0;
+    }
+
 }
